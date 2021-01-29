@@ -1,6 +1,6 @@
 
-var url = "https://twitterprofile.herokuapp.com";
-// var url = "http://localhost:5000";
+// var url = "https://twitterprofile.herokuapp.com";
+var url = "http://localhost:5000";
 var socket = io(url);
 
 socket.on('connect', function () {
@@ -66,6 +66,7 @@ function getProfile() {
     }).then((response) => {
         console.log(response);
         document.getElementById('name').innerHTML = response.data.profile.name
+        sessionStorage.setItem("name", response.data.profile.name)
         document.getElementById('email').innerHTML = response.data.profile.email
         document.getElementById("show_pic").src = response.data.profile.profilePic
     }, (error) => {
@@ -174,12 +175,13 @@ function gettweet() {
 
         let userTweet = response.data
         let userHtml = ""
-
+        console.log("check it :", sessionStorage.getItem("name"))
         userTweet.forEach(element => {
-            if (element.username == response.data.username) {
+
+            if (element.username === sessionStorage.getItem("name")) {
                 userHtml += `
                 <div class="posts">
-                <h4>${element.usernmae}</h4>
+                <h4>${element.username}</h4>
                 <p class="noteCard">${element.tweet}</p>
                 </div>
                 `

@@ -39,7 +39,7 @@ var serviceAccount = JSON.parse(process.env.serviceAccount);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: process.env.databaseURL
+    databaseURL:process.env.databaseURL
 });
 const bucket = admin.storage().bucket(process.env.bucket);
 
