@@ -1,6 +1,6 @@
 
-// var url = "https://twitterprofile.herokuapp.com";
-var url = "http://localhost:5000";
+var url = "https://twitterprofile.herokuapp.com";
+// var url = "http://localhost:5000";
 var socket = io(url);
 
 socket.on('connect', function () {
